@@ -54,4 +54,8 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         return repo.getUserByName(name).orElseThrow(() -> new UsernameNotFoundException("User not found " + name));
     }
+
+    public User getUserByName(String name) {
+        return repo.getUserByName(name).orElseThrow(() -> new UsernameNotFoundException("User not found " + name));
+    }
 }
