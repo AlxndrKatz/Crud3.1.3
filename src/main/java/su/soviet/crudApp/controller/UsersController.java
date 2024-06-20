@@ -12,8 +12,8 @@ import su.soviet.crudApp.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/api/v1")
+public class UsersController {
 
     @Autowired
     private UserService service;

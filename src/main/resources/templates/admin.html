@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap Page</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <style>
         body, html {
             height: 100%;
@@ -18,19 +20,13 @@
         tr:nth-child(even) {
             background-color: #f2f2f2
         }
-
-<!--        -->
         .modal-backdrop {
-            /* Затемнение фона */
             background-color: rgba(0, 0, 0, 0.5);
         }
-
         .modal-open .modal {
-            /* Отображение модального окна поверх затемненного фона */
             overflow-x: hidden;
             overflow-y: auto;
         }
-<!--        -->
     </style>
 </head>
 <body>
@@ -41,7 +37,8 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="display: flex; align-items: center;">
-                <p style="margin-bottom: 0;"><a href="/logout" class="logout-link" style="color: white;">Log Out</a></p>
+                <p style="margin-bottom: 0;"><a href="/logout"
+                                                class="logout-link" style="color: white;">Log Out</a></p>
             </li>
         </ul>
     </div>
@@ -52,7 +49,6 @@
     <div class="row h-100">
         <!-- Sidebar -->
         <div class="col-2" id="sidebar">
-<!--            <ul class="nav nav-pills flex-column">-->
             <ul class="nav nav-pills flex-column" style="padding-top: 1rem;">
                 <li class="nav-item admin-only" id="adminAreaButton">
                     <a class="nav-link active" data-toggle="tab" href="#adminArea">Admin</a>
@@ -64,24 +60,22 @@
         </div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 bg-light">
-
             <div class="container-fluid admin-only" id="adminArea">
                 <h1 class="text">Admin Panel</h1>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="form1-tab" data-toggle="tab" href="#form1" role="tab"
-                           aria-controls="form1" aria-selected="true">All Users</a>
+                        <a class="nav-link active" id="allUsers-tab" data-toggle="tab" href="#allUsers" role="tab"
+                           aria-controls="allUsers" aria-selected="true">All Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="form2-tab" data-toggle="tab" href="#form2" role="tab"
-                           aria-controls="form2" aria-selected="false">New User</a>
+                        <a class="nav-link" id="newUser-tab" data-toggle="tab" href="#newUser" role="tab"
+                           aria-controls="newUser" aria-selected="false">New User</a>
                     </li>
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
                     <!--   ALL USERS TAB    -->
-                    <div class="tab-pane fade show active" id="form1" role="tabpanel" aria-labelledby="form1-tab">
-<!--                       НАЗВАТЬ ФОРМ1 и ФОРМ2 нормально -->
+                    <div class="tab-pane fade show active" id="allUsers" role="tabpanel" aria-labelledby="allUsers-tab">
                         <div class="header">
                             <br>
                             <h5 class="title" id="allUsersLabel">All users</h5>
@@ -105,30 +99,34 @@
                         </table>
                     </div>
                     <!--   NEW USER TAB    -->
-                    <div class="tab-pane fade" id="form2" role="tabpanel" aria-labelledby="form2-tab">
+                    <div class="tab-pane fade" id="newUser" role="tabpanel" aria-labelledby="newUser-tab">
                         <div class="header">
                             <br>
                             <h5 class="title" id="addUserLabel">Add new user</h5>
                             <br>
                         </div>
-                        <div class="card" style="width: 50%; margin: auto;"> <!-- Обертка в стиле карточки и центрирование -->
+                        <div class="card" style="width: 50%; margin: auto;">
                             <div class="card-body">
-                                <form class="centered-form text-center" action="/admin/new-user" method="post">
+                                <form class="centered-form text-center" action="/api/v1/new-user" method="post">
                                     <div class="form-group">
                                         <label for="nameNew">Name</label>
-                                        <input type="text" id="nameNew" name="name" class="form-control" placeholder="User Name">
+                                        <input type="text" id="nameNew" name="name"
+                                               class="form-control" placeholder="User Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="ageNew">Age</label>
-                                        <input type="number" id="ageNew" name="age" class="form-control" placeholder="Age">
+                                        <input type="number" id="ageNew" name="age"
+                                               class="form-control" placeholder="Age">
                                     </div>
                                     <div class="form-group">
                                         <label for="emailNew">Email</label>
-                                        <input type="text" id="emailNew" name="email" class="form-control" placeholder="Email">
+                                        <input type="text" id="emailNew" name="email"
+                                               class="form-control" placeholder="Email">
                                     </div>
                                     <div class="form-group">
                                         <label for="passwordNew">Password</label>
-                                        <input type="password" id="passwordNew" name="password" class="form-control" placeholder="Password">
+                                        <input type="password" id="passwordNew" name="password"
+                                               class="form-control" placeholder="Password">
                                     </div>
                                     <br>
                                     <button type="button" class="btn btn-success">Add new user</button>
@@ -260,16 +258,21 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 <script>
     <!--  SHOW TABLE   -->
         function showTable() {
             $.ajax({
-                url: '/admin/users',
+                url: '/api/v1/users',
                 method: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -283,11 +286,14 @@
                             '<td>' + user.age + '</td>' +
                             '<td>' + user.email + '</td>' +
                             '<td>' + user.password + '</td>' +
-                            '<td>' + user.roles.map(function(role) { return role.authority.replace('ROLE_', ''); }).join(', ') + '</td>' +
+                            '<td>' + user.roles.map(function(role) {
+                            return role.authority.replace('ROLE_', ''); }).join(', ') + '</td>' +
                             '<td>' +
-                            '<button class="btn btn-primary btn-edit" data-id="' + user.id + '" data-toggle="modal" data-target="#editModal">Update</button>' +
+                            '<button class="btn btn-primary btn-edit" data-id="' + user.id
+                            + '" data-toggle="modal" data-target="#editModal">Update</button>' +
                             ' ' +
-                            '<button class="btn btn-danger btn-delete" data-id="' + user.id + '" data-toggle="modal" data-target="#deleteModal">Delete</button>' +
+                            '<button class="btn btn-danger btn-delete" data-id="' + user.id
+                            + '" data-toggle="modal" data-target="#deleteModal">Delete</button>' +
                             '</td>' +
                             '</tr>'
                         );
@@ -338,7 +344,7 @@
         };
 
             $.ajax({
-                url: '/admin/update-user/' + userId,
+                url: '/api/v1/update-user/' + userId,
                 method: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify(userData),
@@ -358,7 +364,7 @@
         var userId = $('#idDelete').val();
 
         $.ajax({
-            url: '/admin/delete-user/' + userId,
+            url: '/api/v1/delete-user/' + userId,
             method: 'DELETE',
             success: function(response) {
                 $('#deleteModal').modal('hide');
@@ -372,7 +378,7 @@
 </script>
 
 <script>
-    $('#form2 .btn-success').click(function() {
+    $('#newUser .btn-success').click(function() {
         var newUser = {
             name: $('#nameNew').val(),
             age: $('#ageNew').val(),
@@ -381,7 +387,7 @@
         };
 
         $.ajax({
-            url: '/admin/new-user',
+            url: '/api/v1/new-user',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(newUser),
@@ -391,7 +397,7 @@
                 $('#ageNew').val('');
                 $('#emailNew').val('');
                 $('#passwordNew').val('');
-                $('#form1-tab').click();
+                $('#allUsers-tab').click();
             },
             error: function() {
                 alert('Error creating user');
@@ -403,7 +409,7 @@
 <script>
     $(document).ready(function() {
     $.ajax({
-        url:'/admin/current-user',
+        url:'/api/v1/current-user',
         method: 'GET',
         dataType: 'json',
         success: function(data) {
@@ -426,7 +432,7 @@
     $('#userAreaButton').click(function() {
         $('#adminArea').hide();
         $.ajax({
-            url:'/admin/current-user',
+            url:'/api/v1/current-user',
             method: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -435,7 +441,8 @@
                               '<td>' + data.name + '</td>' +
                               '<td>' + data.age + '</td>' +
                               '<td>' + data.email + '</td>' +
-                              '<td>' + data.roles.map(function(role) { return role.authority.replace('ROLE_', ''); }).join(', ') + '</td>' +
+                              '<td>' + data.roles.map(function(role) {
+                              return role.authority.replace('ROLE_', ''); }).join(', ') + '</td>' +
                               '</tr>';
                 $('#userArea table tbody').html(userRow);
                 $('#userArea').show();
@@ -452,7 +459,7 @@
     $(document).ready(function() {
     $('.admin-only').hide();
     $.ajax({
-        url:'/admin/current-user',
+        url:'/api/v1/current-user',
         method: 'GET',
         dataType: 'json',
         success: function(data) {

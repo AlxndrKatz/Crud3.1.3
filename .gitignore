@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/replay_pid17540.log
+/hs_err_pid17540.log
