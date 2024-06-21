@@ -107,7 +107,7 @@
                         </div>
                         <div class="card" style="width: 50%; margin: auto;">
                             <div class="card-body">
-                                <form class="centered-form text-center" action="/api/v1/new-user" method="post">
+                                <form class="centered-form text-center" action="/api/v1/admin/new-user" method="post">
                                     <div class="form-group">
                                         <label for="nameNew">Name</label>
                                         <input type="text" id="nameNew" name="name"
@@ -272,7 +272,7 @@
     <!--  SHOW TABLE   -->
         function showTable() {
             $.ajax({
-                url: '/api/v1/users',
+                url: '/api/v1/admin/users',
                 method: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -344,7 +344,7 @@
         };
 
             $.ajax({
-                url: '/api/v1/update-user/' + userId,
+                url: '/api/v1/admin/update-user/' + userId,
                 method: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify(userData),
@@ -364,7 +364,7 @@
         var userId = $('#idDelete').val();
 
         $.ajax({
-            url: '/api/v1/delete-user/' + userId,
+            url: '/api/v1/admin/delete-user/' + userId,
             method: 'DELETE',
             success: function(response) {
                 $('#deleteModal').modal('hide');
@@ -387,7 +387,7 @@
         };
 
         $.ajax({
-            url: '/api/v1/new-user',
+            url: '/api/v1/admin/new-user',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(newUser),

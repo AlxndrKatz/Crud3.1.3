@@ -26,28 +26,28 @@ public class UsersController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping("/new-user")
+    @PostMapping("/admin/new-user")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = service.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @GetMapping("/users")
+    @GetMapping("/admin/users")
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = service.getUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PutMapping("/update-user/{id}")
+    @PutMapping("/admin/update-user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long id, @RequestBody User updateData) {
         User updatedUser = service.updateUser(updateData);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @DeleteMapping("/delete-user/{id}")
+    @DeleteMapping("/admin/delete-user/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         service.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
