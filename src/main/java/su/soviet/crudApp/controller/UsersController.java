@@ -3,6 +3,7 @@ package su.soviet.crudApp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,30 +25,28 @@ public class UsersController {
         return new ResponseEntity<>(currentUser, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/new-user")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = service.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = service.getUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
-        User user = service.getUserById(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping("/update-user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long id, @RequestBody User updateData) {
         User updatedUser = service.updateUser(updateData);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/delete-user/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         service.deleteUser(id);
